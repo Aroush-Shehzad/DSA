@@ -1,13 +1,11 @@
 #include <iostream>
 using namespace std;
 
-const int SIZE = 5;
-
 struct Customer {
     int customerID;
-    char name[SIZE];
-    char contactNumber[SIZE];
-    char address[SIZE];
+    string name;
+    string contactNumber;
+    string address;
     Customer* next;
 };
 
@@ -16,23 +14,23 @@ struct Order {
     int customerID;
     int menuItemID;
     int quantity;
-    char status[SIZE];
+    string status;
     Order* next;
 };
 
 struct MenuItem {
     int menuItemID;
-    char name[SIZE];
+    string name;
     double price;
-    char description[SIZE];
+    string description;
     MenuItem* next;
 };
 
 struct Employee {
     int employeeID;
-    char name[SIZE];
-    char position[SIZE];
-    char contactNumber[SIZE];
+    string name;
+    string position;
+    string contactNumber;
     Employee* next;
 };
 
@@ -40,7 +38,6 @@ struct OrderQueue {
     Order* front;
     Order* rear;
 };
-
 
 OrderQueue orderQueue = {NULL, NULL};
 
@@ -62,20 +59,18 @@ void addOrder() {
 }
 
 void addEmployee() {
-    
 }
 
 void processOrder() {
     
-
 }
 
 void displayMenuItems() {
     MenuItem* temp = menuHead;
     while (temp != NULL) {
-        cout << "ID: " << temp->menuItemID 
-		     << ", Name: " << temp->name 
-			 << ", Price: " << temp->price << endl;
+        cout << "ID: " << temp->menuItemID
+             << ", Name: " << temp->name
+             << ", Price: " << temp->price << endl;
         temp = temp->next;
     }
 }
@@ -83,9 +78,9 @@ void displayMenuItems() {
 void displayCustomers() {
     Customer* temp = customerHead;
     while (temp != NULL) {
-        cout << "ID: " << temp->customerID 
-		     << ", Name: " << temp->name 
-			 << ", Contact: " << temp->contactNumber << endl;
+        cout << "ID: " << temp->customerID
+             << ", Name: " << temp->name
+             << ", Contact: " << temp->contactNumber << endl;
         temp = temp->next;
     }
 }
@@ -105,9 +100,9 @@ void displayOrders() {
 void displayEmployees() {
     Employee* temp = employeeHead;
     while (temp != NULL) {
-        cout << "ID: " << temp->employeeID 
-		     << ", Name: " << temp->name 
-			 << ", Position: " << temp->position << endl;
+        cout << "ID: " << temp->employeeID
+             << ", Name: " << temp->name
+             << ", Position: " << temp->position << endl;
         temp = temp->next;
     }
 }
@@ -130,19 +125,41 @@ int main() {
         cin >> choice;
 
         switch (choice) {
-            case 1: addCustomer(); break;
-            case 2: addOrder(); break;
-            case 3: addMenuItem(); break;
-            case 4: addEmployee(); break;
-            case 5: processOrder(); break;
-            case 6: displayCustomers(); break;
-            case 7: displayOrders(); break;
-            case 8: displayMenuItems(); break;
-            case 9: displayEmployees(); break;
-            case 10: cout << "Exiting system.\n"; break;
-            default: cout << "Invalid choice. Please try again.\n";
+            case 1: 
+			    addCustomer(); 
+			    break;
+            case 2: 
+			    addOrder(); 
+				break;
+            case 3: 
+			    addMenuItem(); 
+				break;
+            case 4:
+			    addEmployee(); 
+				break;
+            case 5:
+			    processOrder(); 
+				break;
+            case 6:
+			    displayCustomers();
+				break;
+            case 7: 
+			    displayOrders(); 
+				break;
+            case 8: 
+			    displayMenuItems(); 
+				break;
+            case 9: 
+			    displayEmployees(); 
+				break;
+            case 10:
+			    cout << "Exiting system.\n"; 
+				break;
+            default:
+			    cout << "Invalid choice. Please try again.\n";
         }
     } while (choice != 10);
 
     return 0;
 }
+
